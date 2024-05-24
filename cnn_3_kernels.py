@@ -355,7 +355,7 @@ with open(model_path, 'a') as fh:
             val_accuracies.append(val_epoch_accuracy)
 
         result = f'Epoch {epoch+1}, Loss: {epoch_loss}, Accuracy: {epoch_accuracy}, Val_Loss: {val_epoch_loss}, Val_Accuracy: {val_epoch_accuracy}\n'
-        print(result.strip())
+        print(result)
         fh.write(result)
          # Check for improvement
         if val_epoch_accuracy > best_val_accuracy:
