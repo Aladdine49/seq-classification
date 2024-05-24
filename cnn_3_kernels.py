@@ -5,7 +5,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
-import seaborn as sns
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 from collections import Counter
@@ -61,10 +60,6 @@ def one_hot(seq):
         else:
             seq_encoded.append(mapping['N'])
     return seq_encoded
-
-# %%
-#fragmentation maxseq = 70
-seq = "AGTCCGATAGCTACGATCGATCGATCGATCGATACGATCGATCGATCGATCGATCGATCGATCGAAGCTATCGATCGTAGCfTAGCTGACTGACTGACTGATGCTAGCTAGCTAGCTAGCTAGCTAGCTGATCGATCGATCGACTGACTGACTGATG"
 
 def fragmentor(sequence, id='', maxseq=75, overlap=10, max_gap=5):
     """
@@ -177,8 +172,6 @@ def convert(labels):
         num_labels.append(dico[lab])
     return num_labels
 
-
-
 # %%
 labels = convert(all_labels)
 print(f'labels_number {len(all_labels)}, sequences_number {len(all_sequences)}')
@@ -273,7 +266,6 @@ class RNASequenceClassifier(nn.Module):
 
         return x
 
-# Assuming the rest of the code for data loading and training remains the same
 
 # Load your data
 data_tensor = torch.tensor(seq_one_hot_code, dtype=torch.float32).to(device)
