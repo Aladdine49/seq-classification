@@ -163,8 +163,6 @@ for seq, id in all_sequences:
     encoded = one_hot(seq)
     seq_one_hot_code.append(encoded)
 
-# %%
-
 def convert(labels):
     dico = {'protein_coding': 0, 'lncRNA' : 1, 'rep' : 2}
     num_labels = list()
@@ -305,14 +303,14 @@ epochs_no_improve = 0
 # Training loop
 model_path = Path('results_accuracy_100.txt')
 model_path.write_text('')
-losses = []
-accuracies = []
-val_losses = []
-val_accuracies = []
+losses = list()
+accuracies = list()
+val_losses = list()
+val_accuracies = list()
 with open(model_path, 'a') as fh:
     for epoch in range(50):
-        epoch_losses = []
-        epoch_accuracies = []
+        epoch_losses = list()
+        epoch_accuracies = list()
         model.train()  # Set the model to training mode
         for inputs, labels in train_loader:
             inputs, labels = inputs.to(device), labels.to(device)
@@ -336,8 +334,8 @@ with open(model_path, 'a') as fh:
 
         model.eval()  # Set the model to evaluation mode
         with torch.no_grad():  # Disable gradient computation
-            val_epoch_losses = []
-            val_epoch_accuracies = []
+            val_epoch_losses = list()
+            val_epoch_accuracies = list()
             for inputs, labels in validation_loader:
                 inputs, labels = inputs.to(device), labels.to(device)
                 inputs = inputs.permute(0, 2, 1)  # Ensure correct input dimensions for convolutions
