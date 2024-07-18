@@ -54,7 +54,7 @@ def custom_loss(outputs, labels, mask):
     masked_labels = labels[mask]
     return nn.CrossEntropyLoss()(masked_outputs, masked_labels)
 
-print("Running the model")
+print("Running model")
 # Early stopping parameters
 patience = 5  # Number of epochs to wait for improvement
 best_val_accuracy = 0
